@@ -23,22 +23,26 @@ public class TareaController {
     @Autowired
     private ITareaService tareaService;
 
+    // Método para obtener todas las tareas
     @GetMapping
     public List<Tarea> getAllTareas() {
         return tareaService.getAllTareas();
     }
 
+    // Método para obtener una tarea específica por su ID
     @GetMapping("/{id}")
     public ResponseEntity<Tarea> getTareaById(@PathVariable String id) {
         Optional<Tarea> tarea = tareaService.getTareaById(id);
         return tarea.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    // Método para crear una nueva tarea
     @PostMapping
     public Tarea createTarea(@RequestBody Tarea tarea) {
         return tareaService.createTarea(tarea);
     }
 
+     // Método para actualizar una tarea existente
     @PutMapping("/{id}")
     public ResponseEntity<Tarea> updateTarea(@PathVariable String id, @RequestBody Tarea tarea) {
         try {
@@ -49,6 +53,7 @@ public class TareaController {
         }
     }
 
+    // Método para eliminar una tarea por su ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTarea(@PathVariable String id) {
         tareaService.deleteTarea(id);

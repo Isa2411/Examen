@@ -31,9 +31,11 @@ public class Tarea {
     private EstadoTarea status;
 
 
+     // Constructor vacío
     public Tarea() {
     }
 
+    // Constructor con parámetros
     public Tarea(String id, String title, LocalDate dueDate, String assignedTo, EstadoTarea status) {
         this.id = id;
         this.title = title;
@@ -42,6 +44,7 @@ public class Tarea {
         this.status = status;
     }
 
+    // Métodos getter y setter para acceder y modificar los campos
     public String getId() {
         return id;
     }
